@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos no HTML</title>
+  </head>
+  <body>
+    <h1>Eventos no HTML</h1>
+
+    <div>
+      <label for="onMouseEnter">Entrada do Mouse:</label>
+      <input
+        type="text"
+        id="onMouseEnter"
+        onmouseenter="console.log('entrada do mouse')"
+      />
+    </div>
+    <br />
+    <div>
+      <label for="onChange">Mudança de Valor:</label>
+      <input
+        type="text"
+        id="onChange"
+        onchange="console.log('mudança de valor')"
+      />
+    </div>
+    <br />
+    <div>
+      <label for="onFocus">Entrada de Foco:</label>
+      <input type="text" id="onFocus" onfocus="console.log('foco')" />
+    </div>
+    <br />
+    <div>
+      <label for="onBlur">Saída de Foco:</label>
+      <input type="text" id="onBlur" onblur="console.log('saindo')" />
+    </div>
+    <br />
+    <button onclick="console.log('clicou')">Clique-me!</button>
+    <script>
+      function mouseEnterEvent() {
+        console.log("mouse entered");
+      }
+
+      function changeEvent() {
+        console.log("value changed");
+      }
+
+      function focusEvent() {
+        console.log("gained focus");
+      }
+
+      function blurEvent() {
+        console.log("lost focus");
+      }
+
+      function clickEvent() {
+        alert("clicked");
+      }
+    </script>
+  </body>
+</html>
