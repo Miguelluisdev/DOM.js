@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>exercicio 11</title>
+  </head>
+  <body>
+    <h1>escalaçãoo de time</h1>
+    <hr />
+    <div>
+      <h3>escalar jogador</h3>
+      <label for="position">Posição: </label>
+      <input type="text" id="position" name="position" />
+      <br />
+      <label for="name">Nome: </label>
+      <input type="text" id="name" name="nome" />
+      <br />
+      <label for="number">Numero: </label>
+      <input type="text" id="number" name="number" />
+      <button onclick="addPlayer()">Escalar</button>
+    </div>
+    <hr />
+    <div>
+      <h3>Remover jogador</h3>
+      <label for="numberRemove">Numero:</label>
+      <input type="text" name="numberRemove" id="numberRemove" />
+      <button onclick="removePlayer()">Remover</button>
+    </div>
+    <h2>Jogadores</h2>
+    <ul id="team-list"></ul>
+    <script src="script.js"></script>
+  </body>
+</html>
