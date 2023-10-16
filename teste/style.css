@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #050505;
+  color: #ebba34;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.planner {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.todo-list {
+  background-color: #ebba34;
+  border: 1px solid #050505;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+#task-input, #add-task-button {
+  margin: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #050505;
+  padding: 5px;
+  text-align: center;
+}
+
+thead {
+  background-color: #050505;
+  color: #ebba34;
+}
+
+#add-task-button {
+  background-color: #050505;
+  color: #ebba34;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}

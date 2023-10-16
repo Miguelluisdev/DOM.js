@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+       .center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+       }
+        .container89 {
+            background-color: #050505;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+            margin: 0;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 23rem;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .tabela {
+            width: 100%;
+            border-collapse: collapse;
+    
+        }
+        .tabela, th, td {
+            border: 1px solid #ccc;
+            color: white;
+        }
+        th, td {
+            padding: 10px;
+            
+        }
+        th {
+            background-color:#ebba34 ;
+      
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+                outline: none;
+                border-radius: 10px;
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 10px;
+            }
+        }
+ 
+.button-54 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+.button-normal{
+    padding: 10px 10px;
+    color: white;
+    background-color: rgba(195, 7, 7, 0.833);
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.button-normal:hover{
+    color: black;
+    background-color: #ebba34;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
+}
+
+@media (max-width: 420px) {
+  .button-84 {
+    height: 48px;
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div class="container89">
+            <h1>Monte sua tabela de treino</h1>
+            <div>
+                <input type="text" id="activity" placeholder="Enter Activity" class="intp.name" >
+                <input type="text" id="day" placeholder="Enter Day"class="intp.name" > 
+                <button onclick="addEntry()" class="button-normal"  >Add</button>
+            </div>
+            <table id="todoTable" class="tabela" >
+                <thead>
+                    <tr>
+                        <th>Atividade</th>
+                        <th>Dia</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="todoList">
+                </tbody>
+            </table>
+            <button onclick="clearTable()" class="button-54" >Clear Table</button>
+        </div>
+    </div>
+    <script>
+        // Initialize the table from local storage
+        const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+
+        function addEntry() {
+            const activity = document.getElementById('activity').value;
+            const day = document.getElementById('day').value;
+            
+            if (activity && day) {
+                const entry = { activity, day };
+                todoList.push(entry);
+                
+                updateTable();
+                
+                // Clear input fields
+                document.getElementById('activity').value = '';
+                document.getElementById('day').value = '';
+            }
+        }
+
+        function deleteEntry(index) {
+            todoList.splice(index, 1);
+            updateTable();
+        }
+
+        function editEntry(index) {
+
+            const editedActivity = prompt('Edit Activity:', todoList[index].activity);
+
+            const editedDay = prompt('Edit Day:', todoList[index].day);
+            
+            if (editedActivity && editedDay) {
+                todoList[index] = { activity: editedActivity, day: editedDay };
+                updateTable();
+            }
+        }
+
+        function clearTable() {
+            todoList.length = 0;
+            updateTable();
+        }
+
+        function updateTable() {
+
+            const table = document.getElementById('todoList');
+            table.innerHTML = '';
+
+            todoList.forEach((entry, index) => {
+
+                const row = table.insertRow();
+                row.insertCell(0).textContent = entry.activity;
+                row.insertCell(1).textContent = entry.day;
+                const actionsCell = row.insertCell(2);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.setAttribute("class", "button-54")
+                deleteButton.onclick = () => deleteEntry(index);
+                actionsCell.appendChild(deleteButton);
+
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.setAttribute("class" , "button-54")
+                editButton.onclick = () => editEntry(index);
+                actionsCell.appendChild(editButton);
+            });
+
+         
+            localStorage.setItem('todoList', JSON.stringify(todoList));
+        }
+
+       
+        updateTable();
+    </script>
+</body>
+</html>
