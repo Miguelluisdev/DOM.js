@@ -184,13 +184,13 @@
                 const actionsCell = row.insertCell(2);
 
                 const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
+                deleteButton.textContent = 'Deletar';
                 deleteButton.setAttribute("class", "button-54")
                 deleteButton.onclick = () => deleteEntry(index);
                 actionsCell.appendChild(deleteButton);
 
                 const editButton = document.createElement('button');
-                editButton.textContent = 'Edit';
+                editButton.textContent = 'Editar';
                 editButton.setAttribute("class" , "button-54")
                 editButton.onclick = () => editEntry(index);
                 actionsCell.appendChild(editButton);
